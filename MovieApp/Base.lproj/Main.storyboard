@@ -86,6 +86,7 @@
                                 <action selector="signOutPressed:" destination="BYZ-38-t0r" id="2Aw-Ka-Tce"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Reviews" id="BuX-fN-0rc"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -192,7 +193,7 @@
                     <navigationItem key="navigationItem" id="uhb-UX-c9c">
                         <barButtonItem key="rightBarButtonItem" title="Reviews" id="q23-oj-CRx">
                             <connections>
-                                <segue destination="QfB-sr-v4i" kind="show" identifier="ShowReviews" id="Tnt-eH-hvH"/>
+                                <segue destination="QfB-sr-v4i" kind="show" id="LT5-Q5-CEI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -213,7 +214,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1886.9565217391305" y="98.4375"/>
+            <point key="canvasLocation" x="1887" y="100"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="g2l-cy-juM">
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRw-is-jqc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3931.884057971015" y="-323.4375"/>
+            <point key="canvasLocation" x="3080" y="-589"/>
         </scene>
         <!--Editing Review View Controller-->
         <scene sceneID="8Kk-6c-CvI">
@@ -300,7 +301,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-5Z-tUO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-5Z-tUO">
                                 <rect key="frame" x="20" y="201" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
@@ -322,6 +323,20 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-sH-7TV">
+                                <rect key="frame" x="236" y="343" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmW-qU-w9m">
+                                <rect key="frame" x="285" y="343" width="109" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="S4o-pE-UJt"/>
@@ -334,11 +349,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="AHK-sI-kQ1">
                             <connections>
+                                <action selector="saveButtonPressed:" destination="GxV-Jd-053" id="LPx-bO-17C"/>
                                 <segue destination="0IQ-fJ-ufP" kind="unwind" identifier="unwindFromReview" unwindAction="unwindFromDetailControllerWithSegue:" id="t7A-9r-sjo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateLabel" destination="QmW-qU-w9m" id="xdj-5f-7pm"/>
                         <outlet property="reviewTextField" destination="74I-KC-RnZ" id="aD1-am-M89"/>
                         <outlet property="reviewTitleTextField" destination="y0I-3y-BgH" id="IRS-cn-5W1"/>
                     </connections>
@@ -346,7 +363,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67W-pM-3oP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="0IQ-fJ-ufP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5953.6231884057979" y="-323.4375"/>
+            <point key="canvasLocation" x="5043.4782608695659" y="-589.28571428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Un4-hd-vDD">
@@ -408,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCx-ga-RXv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3079.7101449275365" y="464.73214285714283"/>
+            <point key="canvasLocation" x="3080" y="100"/>
         </scene>
         <!--Reviews-->
         <scene sceneID="7h9-V6-Xl4">
@@ -427,7 +444,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXd-x1-eUp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3021.739130434783" y="-323.4375"/>
+            <point key="canvasLocation" x="1887" y="-589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8mx-fL-Cl1">
@@ -446,7 +463,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iq-pD-Dma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4943" y="-759"/>
+            <point key="canvasLocation" x="3965" y="-940"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

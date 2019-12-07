@@ -14,8 +14,8 @@ class ReviewViewController: UIViewController {
     
     
     var movie: Movie!
-    var reviewTitleArray = ["Bad", "Good", "Loved it"]
-    var reviewArray = ["1", "2", "3"]
+    var review: Review!
+    var reviews: [Review] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +26,22 @@ class ReviewViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowReview"{
-            let distination = segue.destination as! EditingReviewViewController
-            let index = tableView.indexPathForSelectedRow!.row
-            distination.reviewTitle = reviewTitleArray[index]
-            distination.review = reviewArray[index]
-        }else{
-            if let selectedPath = tableView.indexPathForSelectedRow{
-                tableView.deselectRow(at: selectedPath, animated: false)
+        switch segue.identifier ?? "" {
+        case "AddReview":
+            let navigationController = segue.destination as! UINavigationController
+            let destination = navigationController.viewControllers.first as! EditingReviewViewController
+            destination.movie = movie
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
+        case "ShowReview":
+            let destination = segue.destination as! EditingReviewViewController
+            destination.movie = movie
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            destination.review = reviews.reviewArray[selectedIndexPath.row]
+        default:
+            print("*** ERROR: did not have segue in SpotDetailViewController prepare (for segue:) ")
         }
-
     }
     
     @IBAction func unwindFromDetailController(segue: UIStoryboardSegue){
@@ -59,13 +64,13 @@ class ReviewViewController: UIViewController {
 
 extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviewTitleArray.count
+        return reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
-        cell.textLabel?.text = reviewTitleArray[indexPath.row]
-        cell.detailTextLabel?.text = reviewArray[indexPath.row]
+        cell.textLabel?.text = reviews[indexPath.row]
+        //cell.detailTextLabel?.text = reviewArray[indexPath.row]
         return cell
     }
     

@@ -1,53 +1,47 @@
 //
-//  Movie.swift
+//  Review.swift
 //  MovieApp
 //
-//  Created by Anastasia on 12/4/19.
+//  Created by Anastasia on 12/7/19.
 //  Copyright © 2019 Anastasia. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-class Movie {
+class Review{
     var title: String
-    var vote_average: Double
-    var overview: String
-    var release_date: String
-    var poster_path: String
-    var page: Int
-    var total_pages: Int
+    var review: String
+    var reviewerUserID: String
+    var date: String
     var documentID: String
     
-    
     var dictionary: [String: Any]{
-        return ["title": title, "vote_average" : vote_average, "overview":overview, "release_date":release_date, "poster_path":poster_path, "documentID": documentID , "total_pages": total_pages, "page": page  ]
+        return ["title": title, "review": review, "reviewerUserID": reviewerUserID, "date": date]
     }
     
-    init(title: String, vote_average: Double, overview: String, release_date: String, poster_path: String, documentID: String, page: Int, total_pages: Int ){
+    init(title: String, review: String, rating: Int, reviewerUserID: String, date: String, documentID: String ){
         self.title = title
-        self.vote_average = vote_average
-        self.overview = overview
-        self.release_date = release_date
-        self.poster_path = poster_path
+        self.review = review
+        self.reviewerUserID = reviewerUserID
+        self.date = date
         self.documentID = documentID
-        self.page = page
-        self.total_pages = total_pages
+    }
+    
+    convenience init(){
+        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
+        self.init(title: "", review: "", reviewerUserID: "",  date: "", documentID: "")
     }
     
     convenience init(dictionary: [String: Any]) {
         let title = dictionary["title"] as! String? ?? ""
-        let vote_average = dictionary["vote_average"] as! Double? ?? 0.0
-        let overview = dictionary["overview"] as! String? ?? ""
-        let release_date = dictionary["release_date"] as! String? ?? ""
-        let poster_path = dictionary["poster_path"] as! String? ?? ""
-        let page = dictionary["page"] as! Int? ?? 0
-        let total_pages = dictionary["total_pages"] as! Int? ?? 0
-        let documentID = dictionary["documentID"] as! String? ?? ""
-
-        self.init(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, documentID: documentID, page: page, total_pages:total_pages  )
+        let review = dictionary["review"] as! String? ?? ""
+        let reviewerUserID = dictionary["reviewerUserID"] as! String? ?? ""
+        let date = dictionary["date"] as! String? ?? ""
+        self.init(title: title, review: review, reviewerUserID: reviewerUserID, date: date, documentID: "")
     }
     
+
     
     func saveData(movie: Movie, completed: @escaping (Bool) -> ()){
         let db = Firestore.firestore()
@@ -55,7 +49,7 @@ class Movie {
         let dataToSave = self.dictionary
         // if we have saved a record we will have a doumentID
         if self.documentID != "" {
-            let ref = db.collection("movies").document(self.documentID)
+            let ref = db.collection("movies").document(movie.documentID).collection("reviews").document(self.documentID)
             ref.setData(dataToSave) { (error) in
                 if let error = error {
                     print("*** ERROR updating document \(self.documentID) in spot \(movie.documentID) \(error.localizedDescription)")
@@ -66,7 +60,7 @@ class Movie {
             }
         }else{
             var ref: DocumentReference? = nil
-            ref = db.collection("movies").addDocument(data: dataToSave){ error in
+            ref = db.collection("movies").document(movie.documentID).collection("reviews").addDocument(data: dataToSave){ error in
                 if let error = error {
                     print("*** ERROR creating new document \(self.documentID) in movie \(movie.documentID) \(error.localizedDescription)")
                     completed(false)
@@ -79,10 +73,12 @@ class Movie {
     
     func deleteData(movie: Movie, completed: @escaping (Bool) -> ()){
         let db = Firestore.firestore()
-        db.collection("movie").document(movie.documentID).delete(){ error in
+        db.collection("movies").document(movie.documentID).collection("reviews").document(documentID).delete(){ error in
             if let error = error {
                 print("😡😡😡 ERROR: deleting review documentID \(self.documentID) \(error.localizedDescription)")
             }
         }
+        
     }
+    
 }

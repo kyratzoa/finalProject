@@ -30,6 +30,7 @@ class MoviesViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isHidden = true
         segmentedControlChanged()
         
         movies.getNowPlayingMovies{
@@ -55,7 +56,7 @@ class MoviesViewController: UIViewController {
             present(authUI.authViewController(), animated: true, completion: nil)
         }else{
             tableView.isHidden = false
-            movieUser = MovieUser(user: currentUser!) 
+            movieUser = MovieUser(user: currentUser!)
             movieUser.saveIfNewUser()
         }
         
