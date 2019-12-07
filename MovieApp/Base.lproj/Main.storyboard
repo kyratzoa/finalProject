@@ -80,7 +80,13 @@
                             </segmentedControl>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="Jec-LS-2aS"/>
+                    <navigationItem key="navigationItem" id="Jec-LS-2aS">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="Bo9-tN-k1M">
+                            <connections>
+                                <action selector="signOutPressed:" destination="BYZ-38-t0r" id="2Aw-Ka-Tce"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="giK-4B-Wg4" id="fjh-PP-CWC"/>

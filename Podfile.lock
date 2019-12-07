@@ -172,7 +172,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
-  - Firebase (2.4.1.1)
   - Firebase/Auth (6.13.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.4.0)
@@ -236,13 +235,9 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI (0.2.6):
-    - Firebase (~> 2.4.1.1)
   - FirebaseUI/Auth (8.4.0):
     - Firebase/Auth (~> 6.0)
     - GoogleUtilities/UserDefaults
-  - FirebaseUI/Email (8.4.0):
-    - FirebaseUI/Auth
   - FirebaseUI/Google (8.4.0):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 5.0)
@@ -316,9 +311,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - FirebaseUI
   - FirebaseUI/Auth
-  - FirebaseUI/Email
   - FirebaseUI/Google
   - SwiftyJSON (~> 4.0)
 
@@ -383,6 +376,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 9d3290629c2117b5b108a9e04fd3c6bd327a7db4
+PODFILE CHECKSUM: 1e8e5c9d56a9462ab496f7adbededc12a372c6ed
 
 COCOAPODS: 1.8.4
