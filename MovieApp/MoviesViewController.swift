@@ -22,7 +22,6 @@ class MoviesViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        setUpActivityIndicator()
         segmentedControlChanged()
         
         movies.getNowPlayingMovies{
@@ -33,17 +32,8 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    func setUpActivityIndicator(){
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .whiteLarge
-        activityIndicator.color = .red
-        view.addSubview(activityIndicator)
-    }
-    
     func loadData(loadAll: Bool){
         if movies.apiURL.hasPrefix("http"){
-            activityIndicator.startAnimating()
             UIApplication.shared.beginIgnoringInteractionEvents()
             movies.getNowPlayingMovies {
                 self.tableView.reloadData()
@@ -61,7 +51,11 @@ class MoviesViewController: UIViewController {
         if segue.identifier == "ShowDetail"{
             let destination = segue.destination as! MovieDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow!
-            destination.movie = movies.nowPlayingMovieArray[selectedIndexPath.row]
+            if segmentedControl.selectedSegmentIndex == 0 {
+                destination.movie = movies.nowPlayingMovieArray[selectedIndexPath.row]
+            }else{
+                destination.movie = movies.topRatedMovieArray[selectedIndexPath.row]
+            }
             
         }else{
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -107,10 +101,12 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate{
         }else{
             cell.titleLabel.text = movies.topRatedMovieArray[indexPath.row].title
             cell.overviewLabel.text = movies.topRatedMovieArray[indexPath.row].overview
-            cell.posterView.dowloadFromServer(url: URL(string: "\(movies.nowPlayingMovieArray[indexPath.row].poster_path)")!)
+            cell.posterView.dowloadFromServer(url: URL(string: "\(movies.topRatedMovieArray[indexPath.row].poster_path)")!)
             print("indexPath.row = \(indexPath.row)    popularMovies.popularMoviesArray.count-1 = \(movies.topRatedMovieArray.count-1)")
-            if indexPath.row == movies.topRatedMovieArray.count-1{
-                self.loadData(loadAll: false)
+            if indexPath.row == movies.topRatedMovieArray.count - 1 && movies.topRatedMovieArray[indexPath.row].page != movies.topRatedMovieArray[indexPath.row].total_pages{
+                movies.getTopRated {
+                    self.tableView.reloadData()
+                }
             }
         }
         return cell

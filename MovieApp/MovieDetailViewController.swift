@@ -15,7 +15,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-
+    
     var movie: Movie!
 
     override func viewDidLoad() {
