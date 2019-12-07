@@ -102,7 +102,6 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate{
             cell.titleLabel.text = movies.topRatedMovieArray[indexPath.row].title
             cell.overviewLabel.text = movies.topRatedMovieArray[indexPath.row].overview
             cell.posterView.dowloadFromServer(url: URL(string: "\(movies.topRatedMovieArray[indexPath.row].poster_path)")!)
-            print("indexPath.row = \(indexPath.row)    popularMovies.popularMoviesArray.count-1 = \(movies.topRatedMovieArray.count-1)")
             if indexPath.row == movies.topRatedMovieArray.count - 1 && movies.topRatedMovieArray[indexPath.row].page != movies.topRatedMovieArray[indexPath.row].total_pages{
                 movies.getTopRated {
                     self.tableView.reloadData()
