@@ -42,7 +42,7 @@ class MovieDetailViewController: UIViewController {
     }
 
     @IBAction func detailTapped(_ sender: UITapGestureRecognizer) {
-        if self.detailView.frame.origin.y == 725{
+        if self.detailView.frame.origin.y == 600{
             UIView.animate(withDuration: 2.0) {
                 self.detailView.frame.origin.y = self.detailView.frame.origin.y - 400
             }
