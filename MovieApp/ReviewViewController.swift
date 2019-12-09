@@ -13,14 +13,14 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     
-    var movie: Movie!
+    var movie: String!
     var reviews: Reviews!
     //var reviews: [Review] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Review"
-        
+        self.navigationItem.title = "\(movie!) Reviews"
+    
         tableView.delegate = self
         tableView.dataSource = self
         reviews = Reviews()

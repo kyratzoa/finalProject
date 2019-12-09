@@ -105,7 +105,6 @@
                                 <action selector="signOutPressed:" destination="BYZ-38-t0r" id="2Aw-Ka-Tce"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reviews" id="BuX-fN-0rc"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -207,7 +206,7 @@
                     <navigationItem key="navigationItem" id="uhb-UX-c9c">
                         <barButtonItem key="rightBarButtonItem" title="Reviews" id="q23-oj-CRx">
                             <connections>
-                                <segue destination="QfB-sr-v4i" kind="show" id="LT5-Q5-CEI"/>
+                                <segue destination="QfB-sr-v4i" kind="show" identifier="ShowReviews" id="LT5-Q5-CEI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -216,6 +215,7 @@
                         <outlet property="backgroundImage" destination="ctM-Uf-W57" id="FuL-XN-pbW"/>
                         <outlet property="detailView" destination="ION-Hp-KT3" id="jCm-vw-Ifs"/>
                         <outlet property="overviewTextView" destination="Va6-eq-cGJ" id="USL-5q-02w"/>
+                        <outlet property="playTrailerButton" destination="nuD-Tn-MvM" id="6su-iV-ZJo"/>
                         <outlet property="ratingLabel" destination="5MO-Ca-gkk" id="g48-h4-rv4"/>
                         <outlet property="releaseDateLabel" destination="uec-qS-6ld" id="SHm-ZA-hvx"/>
                         <outlet property="titleLabel" destination="Hpj-jk-g7H" id="jQ7-Vt-01j"/>

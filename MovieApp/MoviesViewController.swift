@@ -65,12 +65,8 @@ class MoviesViewController: UIViewController {
     
     func loadData(loadAll: Bool){
         if movies.apiURL.hasPrefix("http"){
-            UIApplication.shared.beginIgnoringInteractionEvents()
             movies.getNowPlayingMovies {
                 self.tableView.reloadData()
-                //self.navigationItem.title = "\(self.pokemon.pokeArray.count) of  \(self.pokemon.totalPokemon) Pokemon loaded"
-                self.activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
                 if loadAll{
                     self.loadData(loadAll: true)
                 }
@@ -84,10 +80,11 @@ class MoviesViewController: UIViewController {
             let selectedIndexPath = tableView.indexPathForSelectedRow!
             if segmentedControl.selectedSegmentIndex == 0 {
                 destination.movie = movies.nowPlayingMovieArray[selectedIndexPath.row]
+                
             }else{
                 destination.movie = movies.topRatedMovieArray[selectedIndexPath.row]
+                destination.playTrailerButton.isEnabled = false
             }
-            
         }else{
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 tableView.deselectRow(at: selectedIndexPath, animated: true)

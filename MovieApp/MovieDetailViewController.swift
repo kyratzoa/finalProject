@@ -15,7 +15,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-
+    @IBOutlet weak var playTrailerButton: UIBarButtonItem!
+    
     var movie: Movie!
 
     override func viewDidLoad() {
@@ -37,6 +38,9 @@ class MovieDetailViewController: UIViewController {
         if segue.identifier == "PlayTrailerSegue"{
             let destination = segue.destination as! PlayTrailerViewController
             destination.movie = movie.title
+        }else if segue.identifier == "ShowReview"{
+            let destination2 = segue.destination as! ReviewViewController
+            destination2.movie = movie.title
         }
     }
 

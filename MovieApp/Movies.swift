@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import AlamofireImage
+import Firebase
 
 class Movies{
     
@@ -21,6 +22,8 @@ class Movies{
     var topRatedMovieArray:[Movie] = []
     var topRatedAPI = "https://api.themoviedb.org/3/movie/top_rated?api_key=8264fee68c32adbfc86a3b6f3c558e21&page=1"
     var pageNumber = 1
+    
+     var db: Firestore!
     
     func getNowPlayingMovies(completed: @escaping () -> ()){
             Alamofire.request(apiURL).responseJSON {(response) in
@@ -73,6 +76,23 @@ class Movies{
                     }
             case .failure(let error):
                 print("🙃🙃🙃 ERROR: failed to get data from url \(self.apiURL) error: \(error.localizedDescription)")
+            }
+            completed()
+        }
+    }
+    
+        func loadData(completed: @escaping () -> ()){
+            db.collection("movies").addSnapshotListener { (querySnapshot, error) in
+            guard error == nil else {
+                print("*** ERROR: adding the snapshot listener \(error!.localizedDescription)")
+                return completed()
+            }
+            self.nowPlayingMovieArray = []
+            // there are querySnapshot!.documents.count documents in the spots snapshot
+            for document in querySnapshot!.documents {
+                let movie = Movie(dictionary: document.data())
+                movie.documentID = document.documentID
+                self.nowPlayingMovieArray.append(movie)
             }
             completed()
         }
