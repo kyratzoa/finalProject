@@ -14,8 +14,8 @@ class ReviewViewController: UIViewController {
     
     
     var movie: Movie!
-    var review: Review!
-    var reviews: [Review] = []
+    var reviews: Reviews!
+    //var reviews: [Review] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class ReviewViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        reviews = Reviews()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,19 +45,7 @@ class ReviewViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindFromDetailController(segue: UIStoryboardSegue){
-        let sourceViewController = segue.source as! EditingReviewViewController
-        if let indexPath = tableView.indexPathForSelectedRow{
-            reviewTitleArray[indexPath.row] = sourceViewController.reviewTitle!
-            reviewArray[indexPath.row] = sourceViewController.review!
-            tableView.reloadRows(at: [indexPath], with:.automatic)
-           } else{
-            let newIndexPath = IndexPath(row: reviewTitleArray.count, section: 0)
-            reviewTitleArray.append(sourceViewController.reviewTitle!)
-            reviewArray.append(sourceViewController.review!)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-        }
-    }
+
 
     
 
@@ -64,12 +53,12 @@ class ReviewViewController: UIViewController {
 
 extension ReviewViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return reviews.reviewArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
-        cell.textLabel?.text = reviews[indexPath.row]
+        cell.textLabel?.text = reviews.reviewArray[indexPath.row].title
         //cell.detailTextLabel?.text = reviewArray[indexPath.row]
         return cell
     }

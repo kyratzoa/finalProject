@@ -17,7 +17,7 @@ class Reviews{
         db = Firestore.firestore()
     }
     func loadData(movie: Movie, completed: @escaping () -> ()){
-        guard movies.movieID != "" else {
+        guard movie.documentID != "" else {
             return
         }
         db.collection("movies").document(movie.documentID).collection("reviews").addSnapshotListener { (querySnapshot, error) in

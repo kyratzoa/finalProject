@@ -12,8 +12,9 @@ class EditingReviewViewController: UIViewController {
     @IBOutlet weak var reviewTitleTextField: UITextField!
     @IBOutlet weak var reviewTextField: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     
-    var reviewTitle: String?
+    //var reviewTitle: String?
     var review: Review!
     var movie: Movie!
     
@@ -21,15 +22,21 @@ class EditingReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard movie != nil else{
+            print("**** ERROR: did not have a valid movie in ReviewViewController")
+            return
+        }
+        
         if review == nil{
             review = Review()
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindFromReview"{
-            review.title = reviewTitleTextField.text!
-            review.review = reviewTextField.text!
+    func enableDisableSaveButton(){
+        if reviewTitleTextField.text != ""{
+            saveBarButton.isEnabled = true
+        }else{
+            saveBarButton.isEnabled = false
         }
     }
     
@@ -44,7 +51,7 @@ class EditingReviewViewController: UIViewController {
     
     func saveThenSegue(){
         review.title = reviewTitleTextField.text!
-        review.review = reviewTextField.text!
+        review.text = reviewTextField.text!
         review.saveData(movie: movie){(success) in
             if success {
                 self.leaveViewController()

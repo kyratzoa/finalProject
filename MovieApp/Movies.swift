@@ -35,8 +35,8 @@ class Movies{
                         let overview = json["results"][index]["overview"].stringValue
                         let release_date = json["results"][index]["release_date"].stringValue
                         let poster_path = "\(self.posterBaseURL)\(json["results"][index]["poster_path"].stringValue)"
-                        let movieID = json["results"][index]["id"].stringValue
-                        self.nowPlayingMovieArray.append(Movie(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, page: 0, total_pages: 0, movieID: movieID))
+                        //let movieID = json["results"][index]["id"].stringValue
+                        self.nowPlayingMovieArray.append(Movie(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, documentID: "", page: 0, total_pages: 0))
     
                     }
                 case .failure(let error):
@@ -68,8 +68,8 @@ class Movies{
                         let poster_path = "\(self.posterBaseURL)\(json["results"][index]["poster_path"].stringValue)"
                         let page = json["page"].intValue
                         let total_pages = json["total_pages"].intValue
-                        let movieID = json["results"][index]["id"].stringValue
-                        self.topRatedMovieArray.append(Movie(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, page: page, total_pages: total_pages, movieID: movieID ))
+                        //let movieID = json["results"][index]["id"].stringValue
+                        self.topRatedMovieArray.append(Movie(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, documentID: "", page: page, total_pages: total_pages))
                     }
             case .failure(let error):
                 print("🙃🙃🙃 ERROR: failed to get data from url \(self.apiURL) error: \(error.localizedDescription)")
