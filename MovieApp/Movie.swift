@@ -47,42 +47,4 @@ class Movie {
 
         self.init(title: title, vote_average: vote_average, overview: overview, release_date: release_date, poster_path: poster_path, documentID: documentID, page: page, total_pages:total_pages  )
     }
-    
-    
-    func saveData(movie: Movie, completed: @escaping (Bool) -> ()){
-        let db = Firestore.firestore()
-        // Create dictionary representing the data that we want to save
-        let dataToSave = self.dictionary
-        // if we have saved a record we will have a doumentID
-        if self.documentID != "" {
-            let ref = db.collection("movies").document(self.documentID)
-            ref.setData(dataToSave) { (error) in
-                if let error = error {
-                    print("*** ERROR updating document \(self.documentID) in spot \(movie.documentID) \(error.localizedDescription)")
-                    completed(false)
-                } else{
-                    print("^^^ Document updated with ref ID \(ref.documentID)")
-                }
-            }
-        }else{
-            var ref: DocumentReference? = nil
-            ref = db.collection("movies").addDocument(data: dataToSave){ error in
-                if let error = error {
-                    print("*** ERROR creating new document \(self.documentID) in movie \(movie.documentID) \(error.localizedDescription)")
-                    completed(false)
-                } else{
-                    print("^^^ Document new doc created with ref ID \(ref?.documentID ?? "Unknown")")
-                }
-            }
-        }
-    }
-    
-    func deleteData(movie: Movie, completed: @escaping (Bool) -> ()){
-        let db = Firestore.firestore()
-        db.collection("movie").document(movie.documentID).delete(){ error in
-            if let error = error {
-                print("😡😡😡 ERROR: deleting review documentID \(self.documentID) \(error.localizedDescription)")
-            }
-        }
-    }
 }

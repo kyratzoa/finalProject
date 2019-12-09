@@ -59,14 +59,15 @@ class MovieUser{
             self.saveData()
         }
     }
-   
     func saveData(){
         let db = Firestore.firestore()
         let dataToSave: [String:Any?] = self.dictionary
-        db.collection("users").document(documentID).setData(dataToSave as [String : Any]){ error in
+        db.collection("users").document(documentID).setData(dataToSave){ error in
             if let error = error {
                 print("ERROR: adding user \(error.localizedDescription) with user \(self.documentID)")
             }
+            
         }
     }
+
 }

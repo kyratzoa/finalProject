@@ -80,21 +80,4 @@ class Movies{
             completed()
         }
     }
-    
-        func loadData(completed: @escaping () -> ()){
-            db.collection("movies").addSnapshotListener { (querySnapshot, error) in
-            guard error == nil else {
-                print("*** ERROR: adding the snapshot listener \(error!.localizedDescription)")
-                return completed()
-            }
-            self.nowPlayingMovieArray = []
-            // there are querySnapshot!.documents.count documents in the spots snapshot
-            for document in querySnapshot!.documents {
-                let movie = Movie(dictionary: document.data())
-                movie.documentID = document.documentID
-                self.nowPlayingMovieArray.append(movie)
-            }
-            completed()
-        }
-    }
 }

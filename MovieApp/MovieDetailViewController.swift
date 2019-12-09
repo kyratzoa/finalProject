@@ -38,9 +38,6 @@ class MovieDetailViewController: UIViewController {
         if segue.identifier == "PlayTrailerSegue"{
             let destination = segue.destination as! PlayTrailerViewController
             destination.movie = movie.title
-        }else if segue.identifier == "ShowReview"{
-            let destination2 = segue.destination as! ReviewViewController
-            destination2.movie = movie.title
         }
     }
 
