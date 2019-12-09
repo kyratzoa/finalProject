@@ -83,7 +83,7 @@ class MoviesViewController: UIViewController {
                 
             }else{
                 destination.movie = movies.topRatedMovieArray[selectedIndexPath.row]
-                destination.playTrailerButton.isEnabled = false
+                //destination.playTrailerButton.isEnabled = false
             }
         }else{
             if let selectedIndexPath = tableView.indexPathForSelectedRow {

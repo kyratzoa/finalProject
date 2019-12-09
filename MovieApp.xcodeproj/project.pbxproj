@@ -11,6 +11,7 @@
 		5D2BDAE0239A08FF0043E609 /* PlayTrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BDADF239A08FF0043E609 /* PlayTrailerViewController.swift */; };
 		5DA02D9523999CF60075B495 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA02D9423999CF60075B495 /* MovieDetailViewController.swift */; };
 		5DA29AC42398BF0200B160BE /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA29AC32398BF0200B160BE /* MovieTableViewCell.swift */; };
+		5DAF6BCE239EE95C007D79D7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF6BCD239EE95C007D79D7 /* AboutViewController.swift */; };
 		5DCE16CC2398612000FD18F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE16CB2398612000FD18F1 /* AppDelegate.swift */; };
 		5DCE16CE2398612000FD18F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE16CD2398612000FD18F1 /* SceneDelegate.swift */; };
 		5DCE16D02398612000FD18F1 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE16CF2398612000FD18F1 /* MoviesViewController.swift */; };
@@ -31,7 +32,8 @@
 		5D2BDADF239A08FF0043E609 /* PlayTrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTrailerViewController.swift; sourceTree = "<group>"; };
 		5DA02D9423999CF60075B495 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		5DA29AC32398BF0200B160BE /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		5DCE16C82398612000FD18F1 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DAF6BCD239EE95C007D79D7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		5DCE16C82398612000FD18F1 /* IMDbc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMDbc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCE16CB2398612000FD18F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DCE16CD2398612000FD18F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5DCE16CF2398612000FD18F1 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 		5DCE16C92398612000FD18F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5DCE16C82398612000FD18F1 /* MovieApp.app */,
+				5DCE16C82398612000FD18F1 /* IMDbc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +91,7 @@
 				5DA02D9423999CF60075B495 /* MovieDetailViewController.swift */,
 				5D2BDADF239A08FF0043E609 /* PlayTrailerViewController.swift */,
 				5DA29AC32398BF0200B160BE /* MovieTableViewCell.swift */,
+				5DAF6BCD239EE95C007D79D7 /* AboutViewController.swift */,
 				5DCE16D42398612200FD18F1 /* Assets.xcassets */,
 				5DCE16D12398612000FD18F1 /* Main.storyboard */,
 				5DCE16D62398612200FD18F1 /* LaunchScreen.storyboard */,
@@ -135,7 +138,7 @@
 			);
 			name = MovieApp;
 			productName = MovieApp;
-			productReference = 5DCE16C82398612000FD18F1 /* MovieApp.app */;
+			productReference = 5DCE16C82398612000FD18F1 /* IMDbc.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -251,6 +254,7 @@
 			files = (
 				5DCE16E22398ABC300FD18F1 /* Movies.swift in Sources */,
 				5DA02D9523999CF60075B495 /* MovieDetailViewController.swift in Sources */,
+				5DAF6BCE239EE95C007D79D7 /* AboutViewController.swift in Sources */,
 				5D2BDAE0239A08FF0043E609 /* PlayTrailerViewController.swift in Sources */,
 				5DCE16D02398612000FD18F1 /* MoviesViewController.swift in Sources */,
 				5DA29AC42398BF0200B160BE /* MovieTableViewCell.swift in Sources */,
@@ -411,7 +415,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kyratzoglou.MovieApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IMDbc;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -430,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Kyratzoglou.MovieApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IMDbc;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

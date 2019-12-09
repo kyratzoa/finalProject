@@ -12,7 +12,7 @@ import WebKit
 class PlayTrailerViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
         var movie: String!
         
@@ -53,8 +53,11 @@ class PlayTrailerViewController: UIViewController {
             if keyExists{
                 let index = youtubeCodeDictionary.index(forKey: "\(movie!)")
                 getVideo(videoCode: youtubeCodeDictionary[index!].value)
+                messageLabel.text = "Please wait a moment for video to load."
             } else {
-                errorLabel.text = "Couldn't find video."
+                let alert = UIAlertController(title: "Notice", message: "Could not find video in our database. We apologize for any inconvience", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         
