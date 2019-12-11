@@ -88,7 +88,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" id="MZG-vx-aAJ">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="giK-4B-Wg4">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="giK-4B-Wg4">
                                 <rect key="frame" x="20" y="10.5" width="374" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -341,22 +341,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6O-lX-4cZ">
-                                <rect key="frame" x="0.0" y="320" width="414" height="256"/>
+                                <rect key="frame" x="0.0" y="341.5" width="414" height="213"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="213" id="nyk-Nq-eOT"/>
+                                    <constraint firstAttribute="width" constant="414" id="ydO-Gs-AyD"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRO-CO-hkc">
-                                <rect key="frame" x="20" y="185" width="374" height="82"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="cyz-Qt-uPk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpF-0h-Hdh">
                                 <rect key="frame" x="20" y="617" width="374" height="82"/>
                                 <constraints>
@@ -366,19 +361,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRO-CO-hkc">
+                                <rect key="frame" x="20" y="136" width="374" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="cyz-Qt-uPk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="top" secondItem="AtX-RM-uCx" secondAttribute="top" constant="232" id="0zF-JZ-Dv1"/>
-                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="trailing" secondItem="AtX-RM-uCx" secondAttribute="trailing" id="Bz9-ch-1ss"/>
-                            <constraint firstItem="sRO-CO-hkc" firstAttribute="top" secondItem="AtX-RM-uCx" secondAttribute="top" constant="97" id="IO3-3I-lS1"/>
+                            <constraint firstItem="sRO-CO-hkc" firstAttribute="top" secondItem="AtX-RM-uCx" secondAttribute="top" constant="48" id="IO3-3I-lS1"/>
+                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="trailing" secondItem="AtX-RM-uCx" secondAttribute="trailing" id="RTg-Wu-0CT"/>
+                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="leading" secondItem="AtX-RM-uCx" secondAttribute="leading" id="VyN-wN-mBJ"/>
                             <constraint firstItem="CpF-0h-Hdh" firstAttribute="leading" secondItem="AtX-RM-uCx" secondAttribute="leading" constant="20" id="XPf-vj-4rC"/>
                             <constraint firstItem="sRO-CO-hkc" firstAttribute="leading" secondItem="AtX-RM-uCx" secondAttribute="leading" constant="20" id="ZrV-Cj-S6a"/>
                             <constraint firstItem="AtX-RM-uCx" firstAttribute="trailing" secondItem="sRO-CO-hkc" secondAttribute="trailing" constant="20" id="aeD-GZ-ERg"/>
-                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="leading" secondItem="AtX-RM-uCx" secondAttribute="leading" id="cej-hO-1Pb"/>
+                            <constraint firstItem="A6O-lX-4cZ" firstAttribute="centerY" secondItem="3BQ-lX-ahD" secondAttribute="centerY" id="gw2-26-PVL"/>
                             <constraint firstItem="AtX-RM-uCx" firstAttribute="bottom" secondItem="CpF-0h-Hdh" secondAttribute="bottom" constant="114" id="oUW-tf-1Qd"/>
                             <constraint firstItem="AtX-RM-uCx" firstAttribute="trailing" secondItem="CpF-0h-Hdh" secondAttribute="trailing" constant="20" id="v0G-pv-ojs"/>
-                            <constraint firstItem="AtX-RM-uCx" firstAttribute="bottom" secondItem="A6O-lX-4cZ" secondAttribute="bottom" constant="237" id="yT6-Hx-ZHo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AtX-RM-uCx"/>
                     </view>
